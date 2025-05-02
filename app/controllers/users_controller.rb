@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    username = params.fetch("query_username")
+    username = params.fetch("user_id")
     matching_users = User.where({ :username => username })
     @user = matching_users.at(0)
 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     
     the_user.username = params.fetch("query_username")
     the_user.save
-    redirect_to("/users/#{user.username}")
+    redirect_to("/users/#{the_user.username}")
   end
 
 end
